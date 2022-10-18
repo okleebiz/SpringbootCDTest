@@ -141,6 +141,7 @@ header .main-menu li a {
   padding: 10px;
   display: block;
   color: #3c4146;
+  list-style:none;
 }
 
 header .main-menu li a:hover {
@@ -182,6 +183,7 @@ header .sub-menu li a {
 }
 header .sub-menu li a:hover {
   color: #4078c0;
+   display: none;
 }
 #toggle-btn {
   display: none;
