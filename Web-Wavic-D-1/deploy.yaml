@@ -1,27 +1,11 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: nginx-deployment
-  labels:
-    run: my-nginx
-spec:
-  type: NodePort
-  ports:
-  - port: 8080
-    targetPort: 80
-    protocol: TCP
-    name: http
-  selector:
-    run: my-nginx
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: nginx
   labels:
     app: nginx
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: nginx
@@ -33,5 +17,16 @@ spec:
       containers:
       - name: nginx
         image: okleejr/springboot:latest
-        ports:
-        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: neginx
+spec:
+  ports:
+    - name: web-port
+      port: 80
+      targetPort: 80
+  selector:
+    app: nginx
+  type: NodePort
