@@ -1,0 +1,22 @@
+nodes:
+  - address: 192.168.220.149
+    internal_address: ""
+    user: root
+    role: [controlplane, etcd, worker]
+    hostname_override: edumaster1
+  - address: 192.168.220.150
+    internal_address: ""
+    user: root
+    role: [worker]
+    hostname_override: eudmaster2
+
+services:
+  etcd:
+    snapshot: true
+    creation: 6h
+    retention: 24h
+
+ingress:
+    provider: nginx
+    options:
+        use-forwarded-headers: "true"
